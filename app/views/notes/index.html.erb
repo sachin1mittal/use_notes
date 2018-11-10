@@ -1,0 +1,102 @@
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<h2 style="margin-top: 1%;">All Notes</h2>
+<div class="table-responsive">
+<div class="pull-right">
+  <div class="btn-group">
+    <button type="button" class="btn btn-success btn-filter" data-toggle="modal" data-target="#create">Add New Note</button>
+  </div>
+</div>
+<table id="mytable" class="table table-bordred table-striped">
+  <thead>
+    <th>S.No</th>
+    <th>Title</th>
+    <th>body</th>
+    <th>Tags</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </thead>
+  <tbody>
+    <%= render @notes %>
+  </tbody>
+</table>
+<div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="create" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= form_tag notes_path do %>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+          <h4 class="modal-title custom_align" id="Heading">Create Note</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="title" name="note[title]">
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="body"  name="note[body]">
+          </div>
+          <div class="form-group">
+            <input type="text" data-role="tagsinput" class="form-control" placeholder="tags" name="note[tags]">
+          </div>
+        </div>
+        <div class="modal-footer ">
+          <input type="submit" value="Create" class="btn btn-success btn-lg" style="width: 100%;">
+        </div>
+      <% end %>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= form_tag '', method: :put do %>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+          <h4 class="modal-title custom_align" id="Heading">Edit Note</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Title" name="note[title]" id="note-title">
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Body"  name="note[body]" id="note-body">
+          </div>
+          <div class="form-group">
+            <input type="text" data-role="tagsinput" class="form-control" placeholder="Tags" name="note[tags]" id="note-tags">
+          </div>
+        </div>
+        <div class="modal-footer ">
+          <input type="submit" value="Update" class="btn btn-warning btn-lg" style="width: 100%;">
+        </div>
+      <% end %>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        <h4 class="modal-title custom_align" id="Heading">Delete Note</h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Note?</div>
+      </div>
+      <div class="modal-footer ">
+        <%= button_to '', method: :delete, class: 'btn btn-success' do %>
+          <span class="glyphicon glyphicon-ok-sign"></span> Yes
+        <% end %>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

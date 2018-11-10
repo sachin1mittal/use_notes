@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'login' => 'sessions#new'
+  get 'auth' => 'sessions#auth'
+  get 'dropbox/auth_callback' => 'sessions#create'
+
+  resources :notes
+  root 'notes#index'
 end

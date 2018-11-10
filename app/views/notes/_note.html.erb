@@ -1,0 +1,8 @@
+<tr>
+  <td><%= note_counter + 1 %></td>
+  <td><%= note.title %></td>
+  <td><%= note.body %></td>
+  <td><%= note.tags&.join(', ') %></td>
+  <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs edit-button" data-title="Edit" data-toggle="modal" data-target="#edit" data-note-id="<%= note.id %>" data-note-title="<%= note.title %>" data-note-body="<%= note.body %>" data-note-tags="<%= note.tags&.join(',') %>"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+  <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs delete-button" data-title="Delete" data-toggle="modal" data-target="#delete" data-note-id="<%= note.id %>"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+</tr>

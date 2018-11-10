@@ -12,4 +12,9 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require jquery.min
+//= require bootstrap.min
+//= require tagsinput
+//= require notes_crud
+//= require main
 //= require_tree .
